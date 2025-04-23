@@ -13,7 +13,7 @@ load_dotenv()
 
 st.set_page_config(
     page_title="New Binds Analysis Dashboard",
-    page_icon="📊",
+    page_icon="💼",
     layout="wide",
 )
 
