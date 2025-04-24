@@ -13,7 +13,7 @@ load_dotenv()
 
 st.set_page_config(
     page_title="New Binds Analysis Dashboard",
-    page_icon="💼",
+    page_icon="📊",
     layout="wide",
 )
 
@@ -46,7 +46,7 @@ if not st.session_state.sf_connected:
 # ==============================================================================
 
 # -------------------------------------------------------------
-# NEW Expanded LOB_MAPPING
+# UPDATED Expanded LOB_MAPPING - with additional types going to Homeowners
 # -------------------------------------------------------------
 LOB_MAPPING = {
     # HOMEOWNERS
@@ -54,6 +54,9 @@ LOB_MAPPING = {
     "Dwelling Fire - PL": "Homeowners",
     "Mobile Homeowners": "Homeowners",
     "Wind Only - PL": "Homeowners",
+    "Flood - PL": "Homeowners",  # Changed "Other" to "Homeowners"
+    "Builders Risk/Installation - PL": "Homeowners",  # Changed from "Commercial" to "Homeowners"
+    "Dwelling": "Homeowners",  # Added 
     
     # PERSONAL AUTO
     "Personal Auto": "Personal Auto",
@@ -80,7 +83,6 @@ LOB_MAPPING = {
     
     # COMMERCIAL
     "Commercial Package": "Commercial",
-    "Builders Risk/Installation - PL": "Commercial",
     "Builders Risk/Installation - CL": "Commercial",
     "Business Owners": "Commercial",
     "Commercial Auto": "Commercial",
@@ -94,7 +96,6 @@ LOB_MAPPING = {
     "Wind Only - CL": "Commercial",
     
     # EVERYTHING ELSE
-    "Flood - PL": "Other",
     "Personal Liability": "Other",
     "Life": "Other",
     # If new picklist values appear in the future, you can map them here too.
