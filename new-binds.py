@@ -13,7 +13,7 @@ load_dotenv()
 
 st.set_page_config(
     page_title="New Binds Analysis Dashboard",
-    page_icon="📊",
+    page_icon="💼",
     layout="wide",
 )
 
@@ -257,6 +257,10 @@ lob_df, producer_df = connect_sf_and_query(start_date, end_date, new_business_on
 # Visualization 1: Overall LOB distribution.
 st.subheader("Policies by Line of Business Category")
 if not lob_df.empty:
+    # Calculate and display the total number of policies
+    total_policies_lob = lob_df["Count"].sum()
+    st.metric("Total Number of Policies", f"{total_policies_lob:,}")
+    
     grouped_lob = lob_df.groupby("LOB_Category")["Count"].sum().reset_index()
     fig_lob = px.pie(
         grouped_lob,
@@ -272,6 +276,10 @@ else:
 # Visualization 2: Policies per Producer by LOB.
 st.subheader("Policies per Producer by LOB Category")
 if not producer_df.empty:
+    # Calculate and display the total number of policies per producer
+    total_policies_producer = producer_df["Count"].sum()
+    st.metric("Total Number of Policies by Producer", f"{total_policies_producer:,}")
+    
     grouped_producer = producer_df.groupby(["Producer", "LOB_Category"])["Count"].sum().reset_index()
     fig_prod = px.bar(
         grouped_producer,
