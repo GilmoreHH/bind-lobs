@@ -150,7 +150,7 @@ def connect_sf_and_query(start_date, end_date, new_business_only):
         # Format dates as DateTime literals.
         start_date_str = start_date.strftime('%Y-%m-%dT00:00:00Z')
         end_date_str = end_date.strftime('%Y-%m-%dT23:59:59Z')
-        date_filter = f"CreatedDate >= {start_date_str} AND CreatedDate <= {end_date_str}"
+        date_filter = f"EffectiveDate >= {start_date_str} AND EffectiveDate <= {end_date_str}"
         
         # Add New Business filter if checkbox is selected - UPDATED to use Business_Type_Reporting__c
         if new_business_only:
